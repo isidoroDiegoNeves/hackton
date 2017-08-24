@@ -27,6 +27,27 @@
   "ownerDomain" : "server.consorcio",
   "ownerName" : "server.consorcio",
   "methods" : {
+    "consorcioparticipantebeanendpoint.getConsorcioParticipanteBean" : {
+      "path" : "consorcioparticipantebean/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "consorcio.server.ConsorcioParticipanteBeanEndpoint.getConsorcioParticipanteBean",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "consorcioparticipantebeanendpoint.listConsorcioParticipanteBean" : {
       "path" : "consorcioparticipantebean",
       "httpMethod" : "GET",
@@ -44,27 +65,6 @@
           "limit" : {
             "type" : "int32",
             "required" : false
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "consorcioparticipantebeanendpoint.getConsorcioParticipanteBean" : {
-      "path" : "consorcioparticipantebean/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "consorcio.server.ConsorcioParticipanteBeanEndpoint.getConsorcioParticipanteBean",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
           }
         },
         "body" : "empty"
@@ -129,21 +129,6 @@
   },
   "descriptor" : {
     "schemas" : {
-      "CollectionResponse_ConsorcioParticipanteBean" : {
-        "id" : "CollectionResponse_ConsorcioParticipanteBean",
-        "type" : "object",
-        "properties" : {
-          "items" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "ConsorcioParticipanteBean"
-            }
-          },
-          "nextPageToken" : {
-            "type" : "string"
-          }
-        }
-      },
       "ConsorcioParticipanteBean" : {
         "id" : "ConsorcioParticipanteBean",
         "type" : "object",
@@ -177,17 +162,32 @@
             "type" : "integer"
           }
         }
+      },
+      "CollectionResponse_ConsorcioParticipanteBean" : {
+        "id" : "CollectionResponse_ConsorcioParticipanteBean",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "ConsorcioParticipanteBean"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
       }
     },
     "methods" : {
-      "consorcio.server.ConsorcioParticipanteBeanEndpoint.listConsorcioParticipanteBean" : {
-        "response" : {
-          "$ref" : "CollectionResponse_ConsorcioParticipanteBean"
-        }
-      },
       "consorcio.server.ConsorcioParticipanteBeanEndpoint.getConsorcioParticipanteBean" : {
         "response" : {
           "$ref" : "ConsorcioParticipanteBean"
+        }
+      },
+      "consorcio.server.ConsorcioParticipanteBeanEndpoint.listConsorcioParticipanteBean" : {
+        "response" : {
+          "$ref" : "CollectionResponse_ConsorcioParticipanteBean"
         }
       },
       "consorcio.server.ConsorcioParticipanteBeanEndpoint.insertConsorcioParticipanteBean" : {

@@ -1,6 +1,22 @@
 package consorcio.server;
 
-import consorcio.EMF;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nullable;
+import javax.inject.Named;
+import javax.persistence.EntityExistsException;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.Query;
+
+import org.apache.commons.codec.binary.Base64;
+import org.apache.http.client.methods.HttpPost;
 
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
@@ -8,18 +24,13 @@ import com.google.api.server.spi.config.ApiNamespace;
 import com.google.api.server.spi.response.CollectionResponse;
 import com.google.appengine.api.datastore.Cursor;
 import com.google.appengine.datanucleus.query.JPACursorHelper;
+import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
-import java.util.List;
-
-import javax.annotation.Nullable;
-import javax.inject.Named;
-import javax.persistence.EntityExistsException;
-import javax.persistence.EntityNotFoundException;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import consorcio.EMF;
 
 @Api(name = "produtobeanendpoint", namespace = @ApiNamespace(ownerDomain = "server.consorcio", ownerName = "server.consorcio", packagePath = ""))
 public class ProdutoBeanEndpoint {
+	
 
 	/**
 	 * This method lists all the entities inserted in datastore.
@@ -36,7 +47,7 @@ public class ProdutoBeanEndpoint {
 		EntityManager mgr = null;
 		Cursor cursor = null;
 		List<ProdutoBean> execute = null;
-
+		
 		try {
 			mgr = getEntityManager();
 			Query query = mgr.createQuery("select from ProdutoBean as ProdutoBean");

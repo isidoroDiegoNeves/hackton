@@ -27,26 +27,17 @@
   "ownerDomain" : "server.consorcio",
   "ownerName" : "server.consorcio",
   "methods" : {
-    "participanteenderecosbeanendpoint.listParticipanteEnderecosBean" : {
+    "participanteenderecosbeanendpoint.updateParticipanteEnderecosBean" : {
       "path" : "participanteenderecosbean",
-      "httpMethod" : "GET",
+      "httpMethod" : "PUT",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "consorcio.server.ParticipanteEnderecosBeanEndpoint.listParticipanteEnderecosBean",
+      "rosyMethod" : "consorcio.server.ParticipanteEnderecosBeanEndpoint.updateParticipanteEnderecosBean",
       "request" : {
-        "parameters" : {
-          "cursor" : {
-            "type" : "string",
-            "required" : false
-          },
-          "limit" : {
-            "type" : "int32",
-            "required" : false
-          }
-        },
-        "body" : "empty"
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -89,17 +80,26 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "participanteenderecosbeanendpoint.updateParticipanteEnderecosBean" : {
+    "participanteenderecosbeanendpoint.listParticipanteEnderecosBean" : {
       "path" : "participanteenderecosbean",
-      "httpMethod" : "PUT",
+      "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "consorcio.server.ParticipanteEnderecosBeanEndpoint.updateParticipanteEnderecosBean",
+      "rosyMethod" : "consorcio.server.ParticipanteEnderecosBeanEndpoint.listParticipanteEnderecosBean",
       "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -129,21 +129,6 @@
   },
   "descriptor" : {
     "schemas" : {
-      "CollectionResponse_ParticipanteEnderecosBean" : {
-        "id" : "CollectionResponse_ParticipanteEnderecosBean",
-        "type" : "object",
-        "properties" : {
-          "items" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "ParticipanteEnderecosBean"
-            }
-          },
-          "nextPageToken" : {
-            "type" : "string"
-          }
-        }
-      },
       "ParticipanteEnderecosBean" : {
         "id" : "ParticipanteEnderecosBean",
         "type" : "object",
@@ -158,12 +143,30 @@
             "type" : "integer"
           }
         }
+      },
+      "CollectionResponse_ParticipanteEnderecosBean" : {
+        "id" : "CollectionResponse_ParticipanteEnderecosBean",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "ParticipanteEnderecosBean"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
       }
     },
     "methods" : {
-      "consorcio.server.ParticipanteEnderecosBeanEndpoint.listParticipanteEnderecosBean" : {
+      "consorcio.server.ParticipanteEnderecosBeanEndpoint.updateParticipanteEnderecosBean" : {
+        "request" : {
+          "$ref" : "ParticipanteEnderecosBean"
+        },
         "response" : {
-          "$ref" : "CollectionResponse_ParticipanteEnderecosBean"
+          "$ref" : "ParticipanteEnderecosBean"
         }
       },
       "consorcio.server.ParticipanteEnderecosBeanEndpoint.getParticipanteEnderecosBean" : {
@@ -179,12 +182,9 @@
           "$ref" : "ParticipanteEnderecosBean"
         }
       },
-      "consorcio.server.ParticipanteEnderecosBeanEndpoint.updateParticipanteEnderecosBean" : {
-        "request" : {
-          "$ref" : "ParticipanteEnderecosBean"
-        },
+      "consorcio.server.ParticipanteEnderecosBeanEndpoint.listParticipanteEnderecosBean" : {
         "response" : {
-          "$ref" : "ParticipanteEnderecosBean"
+          "$ref" : "CollectionResponse_ParticipanteEnderecosBean"
         }
       },
       "consorcio.server.ParticipanteEnderecosBeanEndpoint.removeParticipanteEnderecosBean" : {

@@ -73,22 +73,6 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "produtobeanendpoint.insertProdutoBean" : {
-      "path" : "produtobean",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "consorcio.server.ProdutoBeanEndpoint.insertProdutoBean",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "produtobeanendpoint.updateProdutoBean" : {
       "path" : "produtobean",
       "httpMethod" : "PUT",
@@ -124,6 +108,22 @@
       },
       "response" : {
         "body" : "empty"
+      }
+    },
+    "produtobeanendpoint.insertProdutoBean" : {
+      "path" : "produtobean",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "consorcio.server.ProdutoBeanEndpoint.insertProdutoBean",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
       }
     }
   },
@@ -180,14 +180,6 @@
           "$ref" : "CollectionResponse_ProdutoBean"
         }
       },
-      "consorcio.server.ProdutoBeanEndpoint.insertProdutoBean" : {
-        "request" : {
-          "$ref" : "ProdutoBean"
-        },
-        "response" : {
-          "$ref" : "ProdutoBean"
-        }
-      },
       "consorcio.server.ProdutoBeanEndpoint.updateProdutoBean" : {
         "request" : {
           "$ref" : "ProdutoBean"
@@ -197,6 +189,14 @@
         }
       },
       "consorcio.server.ProdutoBeanEndpoint.removeProdutoBean" : {
+      },
+      "consorcio.server.ProdutoBeanEndpoint.insertProdutoBean" : {
+        "request" : {
+          "$ref" : "ProdutoBean"
+        },
+        "response" : {
+          "$ref" : "ProdutoBean"
+        }
       }
     }
   }

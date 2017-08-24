@@ -21,7 +21,7 @@
     <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
     <init-param>
       <param-name>services</param-name>
-      <param-value>consorcio.server.ConsorcioBeanEndpoint,consorcio.server.ConsorcioParticipanteBeanEndpoint,consorcio.server.EnderecoBeanEndpoint,consorcio.server.ParticipanteBeanEndpoint,consorcio.server.ParticipanteEnderecosBeanEndpoint,consorcio.server.ProdutoBeanEndpoint</param-value>
+      <param-value>consorcio.server.ConsorcioBeanEndpoint,consorcio.server.ConsorcioParticipanteBeanEndpoint,consorcio.server.EmailControlEndpoint,consorcio.server.EnderecoBeanEndpoint,consorcio.server.ParticipanteBeanEndpoint,consorcio.server.ParticipanteEnderecosBeanEndpoint,consorcio.server.ProdutoBeanEndpoint</param-value>
     </init-param>
   </servlet>
 
