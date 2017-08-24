@@ -1,0 +1,215 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://hackton-consorcio.appspot.com/_ah/api",
+  "name" : "enderecobeanendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "discovery" : [ "PUBLIC" ],
+  "adapter" : {
+    "bns" : "https://hackton-consorcio.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "server.consorcio",
+  "ownerName" : "server.consorcio",
+  "methods" : {
+    "enderecobeanendpoint.getEnderecoBean" : {
+      "path" : "enderecobean/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "consorcio.server.EnderecoBeanEndpoint.getEnderecoBean",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "enderecobeanendpoint.listEnderecoBean" : {
+      "path" : "enderecobean",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "consorcio.server.EnderecoBeanEndpoint.listEnderecoBean",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "enderecobeanendpoint.insertEnderecoBean" : {
+      "path" : "enderecobean",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "consorcio.server.EnderecoBeanEndpoint.insertEnderecoBean",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "enderecobeanendpoint.updateEnderecoBean" : {
+      "path" : "enderecobean",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "consorcio.server.EnderecoBeanEndpoint.updateEnderecoBean",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "enderecobeanendpoint.removeEnderecoBean" : {
+      "path" : "enderecobean/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "consorcio.server.EnderecoBeanEndpoint.removeEnderecoBean",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "EnderecoBean" : {
+        "id" : "EnderecoBean",
+        "type" : "object",
+        "properties" : {
+          "cod" : {
+            "type" : "integer"
+          },
+          "ds_address" : {
+            "type" : "string"
+          },
+          "ds_place" : {
+            "type" : "string"
+          },
+          "ds_number" : {
+            "type" : "string"
+          },
+          "ds_neighborhood" : {
+            "type" : "string"
+          },
+          "ds_city" : {
+            "type" : "string"
+          },
+          "ds_country" : {
+            "type" : "string"
+          },
+          "ds_complement" : {
+            "type" : "string"
+          },
+          "do_type" : {
+            "type" : "string"
+          },
+          "do_main" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CollectionResponse_EnderecoBean" : {
+        "id" : "CollectionResponse_EnderecoBean",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "EnderecoBean"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "consorcio.server.EnderecoBeanEndpoint.getEnderecoBean" : {
+        "response" : {
+          "$ref" : "EnderecoBean"
+        }
+      },
+      "consorcio.server.EnderecoBeanEndpoint.listEnderecoBean" : {
+        "response" : {
+          "$ref" : "CollectionResponse_EnderecoBean"
+        }
+      },
+      "consorcio.server.EnderecoBeanEndpoint.insertEnderecoBean" : {
+        "request" : {
+          "$ref" : "EnderecoBean"
+        },
+        "response" : {
+          "$ref" : "EnderecoBean"
+        }
+      },
+      "consorcio.server.EnderecoBeanEndpoint.updateEnderecoBean" : {
+        "request" : {
+          "$ref" : "EnderecoBean"
+        },
+        "response" : {
+          "$ref" : "EnderecoBean"
+        }
+      },
+      "consorcio.server.EnderecoBeanEndpoint.removeEnderecoBean" : {
+      }
+    }
+  }
+}

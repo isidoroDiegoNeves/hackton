@@ -1,0 +1,2 @@
+serviceClass: consorcio.client.GreetingService
+path: 81B6090AE96287C8AFC189A32D181BB5.gwt.rpc

@@ -1,0 +1,203 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://hackton-consorcio.appspot.com/_ah/api",
+  "name" : "produtobeanendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "discovery" : [ "PUBLIC" ],
+  "adapter" : {
+    "bns" : "https://hackton-consorcio.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "server.consorcio",
+  "ownerName" : "server.consorcio",
+  "methods" : {
+    "produtobeanendpoint.getProdutoBean" : {
+      "path" : "produtobean/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "consorcio.server.ProdutoBeanEndpoint.getProdutoBean",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "produtobeanendpoint.listProdutoBean" : {
+      "path" : "produtobean",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "consorcio.server.ProdutoBeanEndpoint.listProdutoBean",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "produtobeanendpoint.insertProdutoBean" : {
+      "path" : "produtobean",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "consorcio.server.ProdutoBeanEndpoint.insertProdutoBean",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "produtobeanendpoint.updateProdutoBean" : {
+      "path" : "produtobean",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "consorcio.server.ProdutoBeanEndpoint.updateProdutoBean",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "produtobeanendpoint.removeProdutoBean" : {
+      "path" : "produtobean/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "consorcio.server.ProdutoBeanEndpoint.removeProdutoBean",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "ProdutoBean" : {
+        "id" : "ProdutoBean",
+        "type" : "object",
+        "properties" : {
+          "cod" : {
+            "type" : "integer"
+          },
+          "ds_name" : {
+            "type" : "string"
+          },
+          "ds_description" : {
+            "type" : "string"
+          },
+          "do_type" : {
+            "type" : "integer"
+          },
+          "ds_value" : {
+            "type" : "string"
+          },
+          "ds_unit" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CollectionResponse_ProdutoBean" : {
+        "id" : "CollectionResponse_ProdutoBean",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "ProdutoBean"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "consorcio.server.ProdutoBeanEndpoint.getProdutoBean" : {
+        "response" : {
+          "$ref" : "ProdutoBean"
+        }
+      },
+      "consorcio.server.ProdutoBeanEndpoint.listProdutoBean" : {
+        "response" : {
+          "$ref" : "CollectionResponse_ProdutoBean"
+        }
+      },
+      "consorcio.server.ProdutoBeanEndpoint.insertProdutoBean" : {
+        "request" : {
+          "$ref" : "ProdutoBean"
+        },
+        "response" : {
+          "$ref" : "ProdutoBean"
+        }
+      },
+      "consorcio.server.ProdutoBeanEndpoint.updateProdutoBean" : {
+        "request" : {
+          "$ref" : "ProdutoBean"
+        },
+        "response" : {
+          "$ref" : "ProdutoBean"
+        }
+      },
+      "consorcio.server.ProdutoBeanEndpoint.removeProdutoBean" : {
+      }
+    }
+  }
+}
