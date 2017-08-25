@@ -1,0 +1,188 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://hackton-consorcio.appspot.com/_ah/api",
+  "name" : "consorciocontrolendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "discovery" : [ "PUBLIC" ],
+  "adapter" : {
+    "bns" : "https://hackton-consorcio.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "server.consorcio",
+  "ownerName" : "server.consorcio",
+  "methods" : {
+    "consorciocontrolendpoint.listConsorcioControl" : {
+      "path" : "consorciocontrol",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "consorcio.server.ConsorcioControlEndpoint.listConsorcioControl",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "consorciocontrolendpoint.getConsorcioControl" : {
+      "path" : "consorciocontrol/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "consorcio.server.ConsorcioControlEndpoint.getConsorcioControl",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "consorciocontrolendpoint.insertConsorcioControl" : {
+      "path" : "consorciocontrol",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "consorcio.server.ConsorcioControlEndpoint.insertConsorcioControl",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "consorciocontrolendpoint.updateConsorcioControl" : {
+      "path" : "consorciocontrol",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "consorcio.server.ConsorcioControlEndpoint.updateConsorcioControl",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "consorciocontrolendpoint.removeConsorcioControl" : {
+      "path" : "consorciocontrol/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "consorcio.server.ConsorcioControlEndpoint.removeConsorcioControl",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "CollectionResponse_ConsorcioControl" : {
+        "id" : "CollectionResponse_ConsorcioControl",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "ConsorcioControl"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ConsorcioControl" : {
+        "id" : "ConsorcioControl",
+        "type" : "object",
+        "properties" : {
+          "email" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "consorcio.server.ConsorcioControlEndpoint.listConsorcioControl" : {
+        "response" : {
+          "$ref" : "CollectionResponse_ConsorcioControl"
+        }
+      },
+      "consorcio.server.ConsorcioControlEndpoint.getConsorcioControl" : {
+        "response" : {
+          "$ref" : "ConsorcioControl"
+        }
+      },
+      "consorcio.server.ConsorcioControlEndpoint.insertConsorcioControl" : {
+        "request" : {
+          "$ref" : "ConsorcioControl"
+        },
+        "response" : {
+          "$ref" : "ConsorcioControl"
+        }
+      },
+      "consorcio.server.ConsorcioControlEndpoint.updateConsorcioControl" : {
+        "request" : {
+          "$ref" : "ConsorcioControl"
+        },
+        "response" : {
+          "$ref" : "ConsorcioControl"
+        }
+      },
+      "consorcio.server.ConsorcioControlEndpoint.removeConsorcioControl" : {
+      }
+    }
+  }
+}

@@ -4,6 +4,8 @@ package consorcio.server;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.google.api.server.spi.config.ApiMethod;
+
 @Entity
 public class ConsorcioControl {
 	
@@ -16,6 +18,12 @@ public class ConsorcioControl {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	@ApiMethod
+	public String enviaEmail(){
+	
+		return "Sucesso";
 	}
 	
 }
