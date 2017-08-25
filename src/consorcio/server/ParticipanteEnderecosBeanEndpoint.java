@@ -74,7 +74,7 @@ public class ParticipanteEnderecosBeanEndpoint {
 	 * @return The entity with primary key id.
 	 */
 	@ApiMethod(name = "getParticipanteEnderecosBean")
-	public ParticipanteEnderecosBean getParticipanteEnderecosBean(@Named("id") Long id) {
+	public ParticipanteEnderecosBean getParticipanteEnderecosBean(@Named("id") String id) {
 		EntityManager mgr = getEntityManager();
 		ParticipanteEnderecosBean participanteenderecosbean = null;
 		try {
@@ -138,7 +138,7 @@ public class ParticipanteEnderecosBeanEndpoint {
 	 * @param id the primary key of the entity to be deleted.
 	 */
 	@ApiMethod(name = "removeParticipanteEnderecosBean")
-	public void removeParticipanteEnderecosBean(@Named("id") Long id) {
+	public void removeParticipanteEnderecosBean(@Named("id") String id) {
 		EntityManager mgr = getEntityManager();
 		try {
 			ParticipanteEnderecosBean participanteenderecosbean = mgr.find(ParticipanteEnderecosBean.class, id);

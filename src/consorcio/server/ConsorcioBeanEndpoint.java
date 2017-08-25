@@ -73,7 +73,7 @@ public class ConsorcioBeanEndpoint {
 	 * @return The entity with primary key id.
 	 */
 	@ApiMethod(name = "getConsorcioBean")
-	public ConsorcioBean getConsorcioBean(@Named("id") Long id) {
+	public ConsorcioBean getConsorcioBean(@Named("id") String id) {
 		EntityManager mgr = getEntityManager();
 		ConsorcioBean consorciobean = null;
 		try {
@@ -135,7 +135,7 @@ public class ConsorcioBeanEndpoint {
 	 * @param id the primary key of the entity to be deleted.
 	 */
 	@ApiMethod(name = "removeConsorcioBean")
-	public void removeConsorcioBean(@Named("id") Long id) {
+	public void removeConsorcioBean(@Named("id") String id) {
 		EntityManager mgr = getEntityManager();
 		try {
 			ConsorcioBean consorciobean = mgr.find(ConsorcioBean.class, id);

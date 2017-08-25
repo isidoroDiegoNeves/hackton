@@ -39,12 +39,12 @@ public class EmailControlEndpoint {
 	 */
 	@SuppressWarnings({ "unchecked", "unused" })
 	@ApiMethod(name = "listEmailControl")
-	public CollectionResponse<EmailControl> listEmailControl(@Nullable @Named("cursor") String cursorString,
+	public CollectionResponse<ConsorcioControl> listEmailControl(@Nullable @Named("cursor") String cursorString,
 			@Nullable @Named("limit") Integer limit) {
 
 		EntityManager mgr = null;
 		Cursor cursor = null;
-		List<EmailControl> execute = null;
+		List<ConsorcioControl> execute = null;
 
 		try {
 			mgr = getEntityManager();
@@ -59,20 +59,20 @@ public class EmailControlEndpoint {
 				query.setMaxResults(limit);
 			}
 
-			execute = (List<EmailControl>) query.getResultList();
+			execute = (List<ConsorcioControl>) query.getResultList();
 			cursor = JPACursorHelper.getCursor(execute);
 			if (cursor != null)
 				cursorString = cursor.toWebSafeString();
 
 			// Tight loop for fetching all entities from datastore and accomodate
 			// for lazy fetch.
-			for (EmailControl obj : execute)
+			for (ConsorcioControl obj : execute)
 				;
 		} finally {
 			mgr.close();
 		}
 
-		return CollectionResponse.<EmailControl>builder().setItems(execute).setNextPageToken(cursorString).build();
+		return CollectionResponse.<ConsorcioControl>builder().setItems(execute).setNextPageToken(cursorString).build();
 	}
 
 	/**
@@ -82,11 +82,11 @@ public class EmailControlEndpoint {
 	 * @return The entity with primary key id.
 	 */
 	@ApiMethod(name = "getEmailControl")
-	public EmailControl getEmailControl(@Named("id") String id) {
+	public ConsorcioControl getEmailControl(@Named("id") String id) {
 		EntityManager mgr = getEntityManager();
-		EmailControl emailcontrol = null;
+		ConsorcioControl emailcontrol = null;
 		try {
-			emailcontrol = mgr.find(EmailControl.class, id);
+			emailcontrol = mgr.find(ConsorcioControl.class, id);
 		} finally {
 			mgr.close();
 		}
@@ -102,7 +102,7 @@ public class EmailControlEndpoint {
 	 * @return The inserted entity.
 	 */
 	@ApiMethod(name = "insertEmailControl")
-	public EmailControl insertEmailControl(EmailControl emailcontrol) {
+	public ConsorcioControl insertEmailControl(ConsorcioControl emailcontrol) {
 		
 		try {
 			this.sendPost(emailcontrol.getEmail());

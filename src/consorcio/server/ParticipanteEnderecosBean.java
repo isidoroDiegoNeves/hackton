@@ -8,26 +8,25 @@ import javax.persistence.Id;
 public class ParticipanteEnderecosBean {
 	
 	@Id
-	private Integer cod_participante;
-	private Integer cod_address;
-	private Integer item;
-	public Integer getCod_participante() {
+	private String cod_participante;
+	private String cod_address;
+	private String item;
+	public String getCod_participante() {
 		return cod_participante;
 	}
-	public void setCod_participante(Integer cod_participante) {
+	public void setCod_participante(String cod_participante) {
 		this.cod_participante = cod_participante;
 	}
-	public Integer getCod_address() {
+	public String getCod_address() {
 		return cod_address;
 	}
-	public void setCod_address(Integer cod_address) {
+	public void setCod_address(String cod_address) {
 		this.cod_address = cod_address;
 	}
-	public Integer getItem() {
+	public String getItem() {
 		return item;
 	}
-	public void setItem(Integer item) {
+	public void setItem(String item) {
 		this.item = item;
 	}
-	
 }

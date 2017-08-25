@@ -38,7 +38,7 @@
       "request" : {
         "parameters" : {
           "id" : {
-            "type" : "int64",
+            "type" : "string",
             "required" : true
           }
         },
@@ -116,7 +116,7 @@
       "request" : {
         "parameters" : {
           "id" : {
-            "type" : "int64",
+            "type" : "string",
             "required" : true
           }
         },
@@ -134,14 +134,13 @@
         "type" : "object",
         "properties" : {
           "cod_consorcio" : {
-            "type" : "integer"
+            "type" : "string"
           },
           "cod_participante" : {
             "type" : "integer"
           },
           "dt_lottery" : {
-            "type" : "string",
-            "format" : "date-time"
+            "type" : "string"
           },
           "nro_lottery" : {
             "type" : "integer"

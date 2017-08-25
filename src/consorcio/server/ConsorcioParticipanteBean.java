@@ -2,7 +2,6 @@ package consorcio.server;
 
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,16 +10,17 @@ import javax.persistence.Id;
 public class ConsorcioParticipanteBean {
 	
 	@Id
-	private Integer cod_consorcio;
+	private String cod_consorcio;
 	private Integer cod_participante;
-	private Date dt_lottery;
+	private String dt_lottery;
 	private Integer nro_lottery;
 	private String do_status;
 	private BigDecimal ds_value;
-	public Integer getCod_consorcio() {
+	
+	public String getCod_consorcio() {
 		return cod_consorcio;
 	}
-	public void setCod_consorcio(Integer cod_consorcio) {
+	public void setCod_consorcio(String cod_consorcio) {
 		this.cod_consorcio = cod_consorcio;
 	}
 	public Integer getCod_participante() {
@@ -28,12 +28,6 @@ public class ConsorcioParticipanteBean {
 	}
 	public void setCod_participante(Integer cod_participante) {
 		this.cod_participante = cod_participante;
-	}
-	public Date getDt_lottery() {
-		return dt_lottery;
-	}
-	public void setDt_lottery(Date dt_lottery) {
-		this.dt_lottery = dt_lottery;
 	}
 	public Integer getNro_lottery() {
 		return nro_lottery;
@@ -52,6 +46,12 @@ public class ConsorcioParticipanteBean {
 	}
 	public void setDs_value(BigDecimal ds_value) {
 		this.ds_value = ds_value;
+	}
+	public String getDt_lottery() {
+		return dt_lottery;
+	}
+	public void setDt_lottery(String dt_lottery) {
+		this.dt_lottery = dt_lottery;
 	}
 
 }

@@ -10,26 +10,20 @@ import javax.persistence.Id;
 public class ConsorcioBean {
 	
 	@Id
-	private Integer cod;
+	private String cod;
 	private String ds_name;
 	private String ds_description;
-	private Integer cod_product;
+	private String cod_product;
 	private String do_publish;
-	private Date dt_lottery;
+	private String dt_lottery;
 	private Integer nro_lottery;
 	private Integer qt_parcels;
 	private Integer qt_contemplated_lottery;
 	private Integer qt_contemplated_throw;
 	private String ds_cancellation_reason;
-	private Integer cod_responsible;
-	private Date dt_created;
-	private Integer cod_usercreated;
-	public Integer getCod() {
-		return cod;
-	}
-	public void setCod(Integer cod) {
-		this.cod = cod;
-	}
+	private String cod_responsible;
+	private String dt_created;
+	private String cod_usercreated;
 	public String getDs_name() {
 		return ds_name;
 	}
@@ -42,23 +36,11 @@ public class ConsorcioBean {
 	public void setDs_description(String ds_description) {
 		this.ds_description = ds_description;
 	}
-	public Integer getCod_product() {
-		return cod_product;
-	}
-	public void setCod_product(Integer cod_product) {
-		this.cod_product = cod_product;
-	}
 	public String getDo_publish() {
 		return do_publish;
 	}
 	public void setDo_publish(String do_publish) {
 		this.do_publish = do_publish;
-	}
-	public Date getDt_lottery() {
-		return dt_lottery;
-	}
-	public void setDt_lottery(Date dt_lottery) {
-		this.dt_lottery = dt_lottery;
 	}
 	public Integer getNro_lottery() {
 		return nro_lottery;
@@ -90,23 +72,40 @@ public class ConsorcioBean {
 	public void setDs_cancellation_reason(String ds_cancellation_reason) {
 		this.ds_cancellation_reason = ds_cancellation_reason;
 	}
-	public Integer getCod_responsible() {
+	public String getCod() {
+		return cod;
+	}
+	public void setCod(String cod) {
+		this.cod = cod;
+	}
+	public String getCod_product() {
+		return cod_product;
+	}
+	public void setCod_product(String cod_product) {
+		this.cod_product = cod_product;
+	}
+	public String getDt_lottery() {
+		return dt_lottery;
+	}
+	public void setDt_lottery(String dt_lottery) {
+		this.dt_lottery = dt_lottery;
+	}
+	public String getCod_responsible() {
 		return cod_responsible;
 	}
-	public void setCod_responsible(Integer cod_responsible) {
+	public void setCod_responsible(String cod_responsible) {
 		this.cod_responsible = cod_responsible;
 	}
-	public Date getDt_created() {
+	public String getDt_created() {
 		return dt_created;
 	}
-	public void setDt_created(Date dt_created) {
+	public void setDt_created(String dt_created) {
 		this.dt_created = dt_created;
 	}
-	public Integer getCod_usercreated() {
+	public String getCod_usercreated() {
 		return cod_usercreated;
 	}
-	public void setCod_usercreated(Integer cod_usercreated) {
+	public void setCod_usercreated(String cod_usercreated) {
 		this.cod_usercreated = cod_usercreated;
 	}
-	
 }

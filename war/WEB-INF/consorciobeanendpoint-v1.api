@@ -38,7 +38,7 @@
       "request" : {
         "parameters" : {
           "id" : {
-            "type" : "int64",
+            "type" : "string",
             "required" : true
           }
         },
@@ -116,7 +116,7 @@
       "request" : {
         "parameters" : {
           "id" : {
-            "type" : "int64",
+            "type" : "string",
             "required" : true
           }
         },
@@ -134,7 +134,7 @@
         "type" : "object",
         "properties" : {
           "cod" : {
-            "type" : "integer"
+            "type" : "string"
           },
           "ds_name" : {
             "type" : "string"
@@ -143,14 +143,13 @@
             "type" : "string"
           },
           "cod_product" : {
-            "type" : "integer"
+            "type" : "string"
           },
           "do_publish" : {
             "type" : "string"
           },
           "dt_lottery" : {
-            "type" : "string",
-            "format" : "date-time"
+            "type" : "string"
           },
           "nro_lottery" : {
             "type" : "integer"
@@ -168,14 +167,13 @@
             "type" : "string"
           },
           "cod_responsible" : {
-            "type" : "integer"
+            "type" : "string"
           },
           "dt_created" : {
-            "type" : "string",
-            "format" : "date-time"
+            "type" : "string"
           },
           "cod_usercreated" : {
-            "type" : "integer"
+            "type" : "string"
           }
         }
       },

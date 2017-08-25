@@ -8,18 +8,12 @@ import javax.persistence.Id;
 public class ProdutoBean {
 	
 	@Id
-	private Integer cod;
+	private String cod;
 	private String ds_name;
 	private String ds_description;
-	private Integer do_type;
+	private String do_type;
 	private String ds_value;
 	private String ds_unit;
-	public Integer getCod() {
-		return cod;
-	}
-	public void setCod(Integer cod) {
-		this.cod = cod;
-	}
 	public String getDs_name() {
 		return ds_name;
 	}
@@ -31,12 +25,6 @@ public class ProdutoBean {
 	}
 	public void setDs_description(String ds_description) {
 		this.ds_description = ds_description;
-	}
-	public Integer getDo_type() {
-		return do_type;
-	}
-	public void setDo_type(Integer do_type) {
-		this.do_type = do_type;
 	}
 	public String getDs_value() {
 		return ds_value;
@@ -50,4 +38,17 @@ public class ProdutoBean {
 	public void setDs_unit(String ds_unit) {
 		this.ds_unit = ds_unit;
 	}
+	public String getCod() {
+		return cod;
+	}
+	public void setCod(String cod) {
+		this.cod = cod;
+	}
+	public String getDo_type() {
+		return do_type;
+	}
+	public void setDo_type(String do_type) {
+		this.do_type = do_type;
+	}
+	
 }

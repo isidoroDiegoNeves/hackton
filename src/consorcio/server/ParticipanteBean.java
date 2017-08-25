@@ -8,19 +8,13 @@ import javax.persistence.Id;
 public class ParticipanteBean {
 	
 	@Id
-	private Integer cod;
+	private String cod;
 	private String ds_name;
 	private String do_type;
-	private Integer cod_document;
+	private int cod_document;
 	private String email;
 	private String ds_country;
 	private String ds_uf;
-	public Integer getCod() {
-		return cod;
-	}
-	public void setCod(Integer cod) {
-		this.cod = cod;
-	}
 	public String getDs_name() {
 		return ds_name;
 	}
@@ -32,12 +26,6 @@ public class ParticipanteBean {
 	}
 	public void setDo_type(String do_type) {
 		this.do_type = do_type;
-	}
-	public Integer getCod_document() {
-		return cod_document;
-	}
-	public void setCod_document(Integer cod_document) {
-		this.cod_document = cod_document;
 	}
 	public String getEmail() {
 		return email;
@@ -57,4 +45,17 @@ public class ParticipanteBean {
 	public void setDs_uf(String ds_uf) {
 		this.ds_uf = ds_uf;
 	}
+	public String getCod() {
+		return cod;
+	}
+	public void setCod(String cod) {
+		this.cod = cod;
+	}
+	public int getCod_document() {
+		return cod_document;
+	}
+	public void setCod_document(int cod_document) {
+		this.cod_document = cod_document;
+	}
+	
 }

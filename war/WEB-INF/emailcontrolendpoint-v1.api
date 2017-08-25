@@ -28,7 +28,7 @@
   "ownerName" : "server.consorcio",
   "methods" : {
     "emailcontrolendpoint.listEmailControl" : {
-      "path" : "emailcontrol",
+      "path" : "consorciocontrol",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
@@ -53,7 +53,7 @@
       }
     },
     "emailcontrolendpoint.getEmailControl" : {
-      "path" : "emailcontrol/{id}",
+      "path" : "consorciocontrol/{id}",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
@@ -74,7 +74,7 @@
       }
     },
     "emailcontrolendpoint.insertEmailControl" : {
-      "path" : "emailcontrol",
+      "path" : "consorciocontrol",
       "httpMethod" : "POST",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
@@ -92,14 +92,14 @@
   },
   "descriptor" : {
     "schemas" : {
-      "CollectionResponse_EmailControl" : {
-        "id" : "CollectionResponse_EmailControl",
+      "CollectionResponse_ConsorcioControl" : {
+        "id" : "CollectionResponse_ConsorcioControl",
         "type" : "object",
         "properties" : {
           "items" : {
             "type" : "array",
             "items" : {
-              "$ref" : "EmailControl"
+              "$ref" : "ConsorcioControl"
             }
           },
           "nextPageToken" : {
@@ -107,8 +107,8 @@
           }
         }
       },
-      "EmailControl" : {
-        "id" : "EmailControl",
+      "ConsorcioControl" : {
+        "id" : "ConsorcioControl",
         "type" : "object",
         "properties" : {
           "email" : {
@@ -120,20 +120,20 @@
     "methods" : {
       "consorcio.server.EmailControlEndpoint.listEmailControl" : {
         "response" : {
-          "$ref" : "CollectionResponse_EmailControl"
+          "$ref" : "CollectionResponse_ConsorcioControl"
         }
       },
       "consorcio.server.EmailControlEndpoint.getEmailControl" : {
         "response" : {
-          "$ref" : "EmailControl"
+          "$ref" : "ConsorcioControl"
         }
       },
       "consorcio.server.EmailControlEndpoint.insertEmailControl" : {
         "request" : {
-          "$ref" : "EmailControl"
+          "$ref" : "ConsorcioControl"
         },
         "response" : {
-          "$ref" : "EmailControl"
+          "$ref" : "ConsorcioControl"
         }
       }
     }

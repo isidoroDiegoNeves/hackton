@@ -73,7 +73,7 @@ public class ParticipanteBeanEndpoint {
 	 * @return The entity with primary key id.
 	 */
 	@ApiMethod(name = "getParticipanteBean")
-	public ParticipanteBean getParticipanteBean(@Named("id") Long id) {
+	public ParticipanteBean getParticipanteBean(@Named("id") String id) {
 		EntityManager mgr = getEntityManager();
 		ParticipanteBean participantebean = null;
 		try {
@@ -135,7 +135,7 @@ public class ParticipanteBeanEndpoint {
 	 * @param id the primary key of the entity to be deleted.
 	 */
 	@ApiMethod(name = "removeParticipanteBean")
-	public void removeParticipanteBean(@Named("id") Long id) {
+	public void removeParticipanteBean(@Named("id") String id) {
 		EntityManager mgr = getEntityManager();
 		try {
 			ParticipanteBean participantebean = mgr.find(ParticipanteBean.class, id);

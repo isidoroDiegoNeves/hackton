@@ -73,7 +73,7 @@ public class EnderecoBeanEndpoint {
 	 * @return The entity with primary key id.
 	 */
 	@ApiMethod(name = "getEnderecoBean")
-	public EnderecoBean getEnderecoBean(@Named("id") Long id) {
+	public EnderecoBean getEnderecoBean(@Named("id") String id) {
 		EntityManager mgr = getEntityManager();
 		EnderecoBean enderecobean = null;
 		try {
@@ -135,7 +135,7 @@ public class EnderecoBeanEndpoint {
 	 * @param id the primary key of the entity to be deleted.
 	 */
 	@ApiMethod(name = "removeEnderecoBean")
-	public void removeEnderecoBean(@Named("id") Long id) {
+	public void removeEnderecoBean(@Named("id") String id) {
 		EntityManager mgr = getEntityManager();
 		try {
 			EnderecoBean enderecobean = mgr.find(EnderecoBean.class, id);

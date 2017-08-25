@@ -8,7 +8,7 @@ import javax.persistence.Id;
 public class EnderecoBean {
 	
 	@Id
-	private Integer cod;
+	private String cod;
 	private String ds_address;
 	private String ds_place;
 	private String ds_number;
@@ -18,12 +18,8 @@ public class EnderecoBean {
 	private String ds_complement;
 	private String do_type;
 	private String do_main;
-	public Integer getCod() {
-		return cod;
-	}
-	public void setCod(Integer cod) {
-		this.cod = cod;
-	}
+	
+	
 	public String getDs_address() {
 		return ds_address;
 	}
@@ -38,6 +34,12 @@ public class EnderecoBean {
 	}
 	public String getDs_number() {
 		return ds_number;
+	}
+	public String getCod() {
+		return cod;
+	}
+	public void setCod(String cod) {
+		this.cod = cod;
 	}
 	public void setDs_number(String ds_number) {
 		this.ds_number = ds_number;

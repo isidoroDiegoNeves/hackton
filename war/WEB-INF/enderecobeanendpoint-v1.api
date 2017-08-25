@@ -63,7 +63,7 @@
       "request" : {
         "parameters" : {
           "id" : {
-            "type" : "int64",
+            "type" : "string",
             "required" : true
           }
         },
@@ -116,7 +116,7 @@
       "request" : {
         "parameters" : {
           "id" : {
-            "type" : "int64",
+            "type" : "string",
             "required" : true
           }
         },
@@ -149,7 +149,7 @@
         "type" : "object",
         "properties" : {
           "cod" : {
-            "type" : "integer"
+            "type" : "string"
           },
           "ds_address" : {
             "type" : "string"

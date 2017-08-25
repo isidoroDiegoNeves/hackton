@@ -54,7 +54,7 @@
       "request" : {
         "parameters" : {
           "id" : {
-            "type" : "int64",
+            "type" : "string",
             "required" : true
           }
         },
@@ -116,7 +116,7 @@
       "request" : {
         "parameters" : {
           "id" : {
-            "type" : "int64",
+            "type" : "string",
             "required" : true
           }
         },
@@ -134,13 +134,13 @@
         "type" : "object",
         "properties" : {
           "cod_participante" : {
-            "type" : "integer"
+            "type" : "string"
           },
           "cod_address" : {
-            "type" : "integer"
+            "type" : "string"
           },
           "item" : {
-            "type" : "integer"
+            "type" : "string"
           }
         }
       },
