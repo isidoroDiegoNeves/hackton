@@ -2,10 +2,14 @@ package consorcio.server;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Nullable;
@@ -22,6 +26,8 @@ import com.google.api.server.spi.config.ApiNamespace;
 import com.google.api.server.spi.response.CollectionResponse;
 import com.google.appengine.api.datastore.Cursor;
 import com.google.appengine.datanucleus.query.JPACursorHelper;
+import com.google.appengine.labs.repackaged.org.json.JSONArray;
+import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
 import consorcio.EMF;
@@ -82,13 +88,15 @@ public class ConsorcioControlEndpoint {
 	 */
 	@ApiMethod(name = "getConsorcioControl")
 	public ConsorcioControl getConsorcioControl(@Named("id") String id) {
-		EntityManager mgr = getEntityManager();
-		ConsorcioControl consorciocontrol = null;
+		ConsorcioControl consorciocontrol = new ConsorcioControl();
+		consorciocontrol.setEmail("Sucesso");
+		
 		try {
-			consorciocontrol = mgr.find(ConsorcioControl.class, id);
-		} finally {
-			mgr.close();
+			consorciocontrol = this.recuperaMaiorLance();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		
 		return consorciocontrol;
 	}
 
@@ -116,9 +124,11 @@ public class ConsorcioControlEndpoint {
 	// HTTP POST request
 	private void sendPost(String email) throws Exception {
 
-		URL url = new URL("https://us16.api.mailchimp.com/3.0/campaigns/b608683e4c/actions/test");
+		URL url = new URL("https://us16.api.mailchimp.com/3.0/campaigns/b3e44bbb9f/actions/test");
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
+		conn.setConnectTimeout(5000);
+		conn.setReadTimeout(5000);
 		conn.setRequestProperty("Authorization", "Basic " + getBasicAuthenticationEncoding());
 		// add reuqest header
 		conn.setRequestMethod("POST");
@@ -155,9 +165,84 @@ public class ConsorcioControlEndpoint {
 		System.out.println(response.toString());
 
 	}
+	
+	// HTTP POST request
+	private ConsorcioControl recuperaMaiorLance() throws Exception {
+
+		URL url = new URL("https://1-dot-hackton-consorcio.appspot.com/_ah/api/consorcioparticipantebeanendpoint/v1/consorcioparticipantebean");
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+
+		conn.setConnectTimeout(5000);
+		conn.setReadTimeout(5000);
+		int responseCode = conn.getResponseCode();
+		System.out.println("\nSending 'POST' request to URL : " + url);
+		System.out.println("Response Code : " + responseCode);
+
+		BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		String inputLine;
+		StringBuffer response = new StringBuffer();
+
+		while ((inputLine = in.readLine()) != null) {
+			response.append(inputLine);
+		}
+		in.close();
+		
+		JSONObject items = new JSONObject(response.toString());
+		JSONArray users = items.getJSONArray("items");
+		JSONObject vencedor = new JSONObject();
+		int valorAnterior = 0;
+		for (int i = 0; i < users.length(); i++) {
+			JSONObject objects = users.getJSONObject(i);
+			if (objects.has("ds_value")) {
+				if (objects.getInt("ds_value") > valorAnterior) {
+					vencedor = objects;
+				}
+				valorAnterior = objects.getInt("ds_value");
+			}
+			System.out.println(objects);
+		}
+		ConsorcioControl consorcio = new ConsorcioControl();
+		if(vencedor.has("cod_participante")){
+			JSONObject email = this.getEmail(vencedor);
+			consorcio.setEmail("Parabens! "+email.getString("ds_name")+" voce foi sorteado, e um email com uma descricao do sorteio foi enviado para "+email.getString("email")+".");
+			this.sendPost(email.getString("email"));
+		}
+
+		return consorcio;
+
+	}
+	
+	private JSONObject getEmail(JSONObject vencedor) throws IOException, JSONException{
+		
+		URL url = new URL("https://1-dot-hackton-consorcio.appspot.com/_ah/api/participantebeanendpoint/v1/participantebean/"+vencedor.getString("cod_participante"));
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+
+		conn.setConnectTimeout(5000);
+		conn.setReadTimeout(5000);
+		int responseCode = conn.getResponseCode();
+		System.out.println("\nSending 'POST' request to URL : " + url);
+		System.out.println("Response Code : " + responseCode);
+
+		BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		String inputLine;
+		StringBuffer response = new StringBuffer();
+
+		while ((inputLine = in.readLine()) != null) {
+			response.append(inputLine);
+		}
+		in.close();
+		
+		return new JSONObject(response.toString());
+	}
 
 	private String getBasicAuthenticationEncoding() {
-		String userPassword = "isidoroDiegoNeves@gmail.com" + ":" + "854eeca59871686ac9fd902b151ab4ab-us16";
+		String userPassword = "EES2017" + ":" + "3af8d9e3486a28a95da071eb52aac7c0-us16";
 		byte[] result = userPassword.getBytes();
 		result = Base64.encodeBase64(result);
 		return new String(result);

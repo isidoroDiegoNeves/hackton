@@ -27,27 +27,6 @@
   "ownerDomain" : "server.consorcio",
   "ownerName" : "server.consorcio",
   "methods" : {
-    "consorciobeanendpoint.getConsorcioBean" : {
-      "path" : "consorciobean/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "consorcio.server.ConsorcioBeanEndpoint.getConsorcioBean",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "string",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "consorciobeanendpoint.listConsorcioBean" : {
       "path" : "consorciobean",
       "httpMethod" : "GET",
@@ -125,10 +104,46 @@
       "response" : {
         "body" : "empty"
       }
+    },
+    "consorciobeanendpoint.getConsorcioBean" : {
+      "path" : "consorciobean/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "consorcio.server.ConsorcioBeanEndpoint.getConsorcioBean",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
     }
   },
   "descriptor" : {
     "schemas" : {
+      "CollectionResponse_ConsorcioBean" : {
+        "id" : "CollectionResponse_ConsorcioBean",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "ConsorcioBean"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      },
       "ConsorcioBean" : {
         "id" : "ConsorcioBean",
         "type" : "object",
@@ -176,29 +191,9 @@
             "type" : "string"
           }
         }
-      },
-      "CollectionResponse_ConsorcioBean" : {
-        "id" : "CollectionResponse_ConsorcioBean",
-        "type" : "object",
-        "properties" : {
-          "items" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "ConsorcioBean"
-            }
-          },
-          "nextPageToken" : {
-            "type" : "string"
-          }
-        }
       }
     },
     "methods" : {
-      "consorcio.server.ConsorcioBeanEndpoint.getConsorcioBean" : {
-        "response" : {
-          "$ref" : "ConsorcioBean"
-        }
-      },
       "consorcio.server.ConsorcioBeanEndpoint.listConsorcioBean" : {
         "response" : {
           "$ref" : "CollectionResponse_ConsorcioBean"
@@ -221,6 +216,11 @@
         }
       },
       "consorcio.server.ConsorcioBeanEndpoint.removeConsorcioBean" : {
+      },
+      "consorcio.server.ConsorcioBeanEndpoint.getConsorcioBean" : {
+        "response" : {
+          "$ref" : "ConsorcioBean"
+        }
       }
     }
   }

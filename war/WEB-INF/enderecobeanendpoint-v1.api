@@ -27,26 +27,38 @@
   "ownerDomain" : "server.consorcio",
   "ownerName" : "server.consorcio",
   "methods" : {
-    "enderecobeanendpoint.listEnderecoBean" : {
-      "path" : "enderecobean",
-      "httpMethod" : "GET",
+    "enderecobeanendpoint.removeEnderecoBean" : {
+      "path" : "enderecobean/{id}",
+      "httpMethod" : "DELETE",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "consorcio.server.EnderecoBeanEndpoint.listEnderecoBean",
+      "rosyMethod" : "consorcio.server.EnderecoBeanEndpoint.removeEnderecoBean",
       "request" : {
         "parameters" : {
-          "cursor" : {
+          "id" : {
             "type" : "string",
-            "required" : false
-          },
-          "limit" : {
-            "type" : "int32",
-            "required" : false
+            "required" : true
           }
         },
         "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "enderecobeanendpoint.updateEnderecoBean" : {
+      "path" : "enderecobean",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "consorcio.server.EnderecoBeanEndpoint.updateEnderecoBean",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -73,17 +85,26 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "enderecobeanendpoint.updateEnderecoBean" : {
+    "enderecobeanendpoint.listEnderecoBean" : {
       "path" : "enderecobean",
-      "httpMethod" : "PUT",
+      "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "consorcio.server.EnderecoBeanEndpoint.updateEnderecoBean",
+      "rosyMethod" : "consorcio.server.EnderecoBeanEndpoint.listEnderecoBean",
       "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -104,46 +125,10 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
-    },
-    "enderecobeanendpoint.removeEnderecoBean" : {
-      "path" : "enderecobean/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "consorcio.server.EnderecoBeanEndpoint.removeEnderecoBean",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "string",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "empty"
-      }
     }
   },
   "descriptor" : {
     "schemas" : {
-      "CollectionResponse_EnderecoBean" : {
-        "id" : "CollectionResponse_EnderecoBean",
-        "type" : "object",
-        "properties" : {
-          "items" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "EnderecoBean"
-            }
-          },
-          "nextPageToken" : {
-            "type" : "string"
-          }
-        }
-      },
       "EnderecoBean" : {
         "id" : "EnderecoBean",
         "type" : "object",
@@ -179,18 +164,25 @@
             "type" : "string"
           }
         }
+      },
+      "CollectionResponse_EnderecoBean" : {
+        "id" : "CollectionResponse_EnderecoBean",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "EnderecoBean"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
       }
     },
     "methods" : {
-      "consorcio.server.EnderecoBeanEndpoint.listEnderecoBean" : {
-        "response" : {
-          "$ref" : "CollectionResponse_EnderecoBean"
-        }
-      },
-      "consorcio.server.EnderecoBeanEndpoint.getEnderecoBean" : {
-        "response" : {
-          "$ref" : "EnderecoBean"
-        }
+      "consorcio.server.EnderecoBeanEndpoint.removeEnderecoBean" : {
       },
       "consorcio.server.EnderecoBeanEndpoint.updateEnderecoBean" : {
         "request" : {
@@ -200,6 +192,16 @@
           "$ref" : "EnderecoBean"
         }
       },
+      "consorcio.server.EnderecoBeanEndpoint.getEnderecoBean" : {
+        "response" : {
+          "$ref" : "EnderecoBean"
+        }
+      },
+      "consorcio.server.EnderecoBeanEndpoint.listEnderecoBean" : {
+        "response" : {
+          "$ref" : "CollectionResponse_EnderecoBean"
+        }
+      },
       "consorcio.server.EnderecoBeanEndpoint.insertEnderecoBean" : {
         "request" : {
           "$ref" : "EnderecoBean"
@@ -207,8 +209,6 @@
         "response" : {
           "$ref" : "EnderecoBean"
         }
-      },
-      "consorcio.server.EnderecoBeanEndpoint.removeEnderecoBean" : {
       }
     }
   }

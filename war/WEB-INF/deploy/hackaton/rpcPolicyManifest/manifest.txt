@@ -1,2 +1,3 @@
 # Module hackaton
 # RPC service class, partial path of RPC policy file
+consorcio.client.GreetingService, 81B6090AE96287C8AFC189A32D181BB5.gwt.rpc
